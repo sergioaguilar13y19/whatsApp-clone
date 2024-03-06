@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { StyleSheet } from "react-native";
 
-export const defauktStyles = StyleSheet.create({
+export const defaultStyles = StyleSheet.create({
   block: {
     backgroundColor: "#fff",
     borderRadius: 10,
