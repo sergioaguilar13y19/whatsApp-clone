@@ -8,7 +8,7 @@ import es from "./es.json";
  * Represents an instance of the I18n class.
  * remove localization for testing
  */
-const il8n = new I18n({ en, es });
+const il8n = new I18n({ es, en });
 il8n.locale = localization.getLocales()[0].languageCode || "en";
 il8n.enableFallback = true;
 

@@ -1,30 +1,33 @@
-import { Text, StyleSheet, Image, Pressable, Platform } from "react-native";
+import { Text, StyleSheet, Image, Pressable, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Colors, moderateScale, WORDS_SCREENS } from "@/constants";
+import { Link } from "expo-router";
 
-const welcome_image = require("@/assets/images/welcome.png");
-const BUTTON_MARGIN_BOTTOM = Platform.OS === "ios" ? 40 : 70;
-const WELCOME_MARGIN_BOTTOM = Platform.OS === "ios" ? 40 : 10;
+const WELCOME_IMAGE = require("@/assets/images/welcome.png");
 
 const Page = () => {
   const { welcome, description, accept } = WORDS_SCREENS.Welcome;
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={welcome_image} style={styles.welcome} />
-      <Text style={styles.headline}> {welcome} </Text>
-      <Text style={styles.description}>
-        {description.read}{" "}
-        <Text style={styles.link}>{description.privacy}</Text>
+      <Image source={WELCOME_IMAGE} style={styles.welcome} />
+      <View>
+        <Text style={styles.headline}> {welcome} </Text>
         <Text style={styles.description}>
-          {" "}
-          {description.terms}{" "}
-          <Text style={styles.link}>{description.termsEnd}</Text>
+          {description.read}{" "}
+          <Text style={styles.link}>{description.privacy}</Text>
+          <Text style={styles.description}>
+            {" "}
+            {description.terms}{" "}
+            <Text style={styles.link}>{description.termsEnd}</Text>
+          </Text>
         </Text>
-      </Text>
-      <Pressable style={[styles.btn, {}]}>
-        <Text>{accept}</Text>
-      </Pressable>
+      </View>
+      <Link href="/otp" replace asChild>
+        <TouchableOpacity style={styles.btn}>
+          <Text style={styles.txtButton}>{accept}</Text>
+        </TouchableOpacity>
+      </Link>
     </SafeAreaView>
   );
 };
@@ -32,15 +35,14 @@ const Page = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: moderateScale(10),
+    padding: moderateScale(15),
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
     backgroundColor: "#fff",
   },
   welcome: {
-    height: moderateScale(330),
+    height: moderateScale(390),
     aspectRatio: 1,
-    marginBottom: moderateScale(WELCOME_MARGIN_BOTTOM),
   },
   headline: {
     fontSize: moderateScale(22),
@@ -51,16 +53,23 @@ const styles = StyleSheet.create({
   description: {
     fontSize: moderateScale(14),
     color: Colors.gray,
-    marginBottom: moderateScale(35),
   },
   link: {
     color: Colors.primary,
   },
   btn: {
-    backgroundColor: Colors.lightGray,
-    padding: moderateScale(10),
-    borderRadius: moderateScale(10),
-    marginBottom: moderateScale(BUTTON_MARGIN_BOTTOM),
+    width: "100%",
+    height: moderateScale(45),
+    //backgroundColor: Colors.primary,
+    padding: moderateScale(6),
+    borderRadius: moderateScale(20),
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  txtButton: {
+    color: Colors.primary,
+    fontSize: moderateScale(18),
+    fontWeight: "600",
   },
 });
 
