@@ -1,21 +1,14 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Pressable,
-  Platform,
-} from "react-native";
-import React from "react";
-import { Colors, moderateScale, WORDS_SCREENS } from "@/constants";
+import { Text, StyleSheet, Image, Pressable, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { Colors, moderateScale, WORDS_SCREENS } from "@/constants";
+
 const welcome_image = require("@/assets/images/welcome.png");
 const BUTTON_MARGIN_BOTTOM = Platform.OS === "ios" ? 40 : 70;
 const WELCOME_MARGIN_BOTTOM = Platform.OS === "ios" ? 40 : 10;
 
 const Page = () => {
   const { welcome, description, accept } = WORDS_SCREENS.Welcome;
-
   return (
     <SafeAreaView style={styles.container}>
       <Image source={welcome_image} style={styles.welcome} />
@@ -59,7 +52,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(14),
     color: Colors.gray,
     marginBottom: moderateScale(35),
-    
   },
   link: {
     color: Colors.primary,
