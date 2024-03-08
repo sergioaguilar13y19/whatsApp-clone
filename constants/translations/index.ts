@@ -10,7 +10,7 @@ const translations = {
     privacy: "Privacy Policy",
     terms: "Tap 'Agree and continue' to accept the",
     termsEnd: "WhatsApp Terms of Service",
-    accept: "Agree and continue",
+    accept: "Agree & Continue",
     titleRegister: "Enter Your Phone Number",
     advisementAge:
       "You must be 16 years or older to register. Learn how WhatsApp works with the Meta Companies.",
@@ -23,7 +23,7 @@ const translations = {
     privacy: "Política de privacidad",
     terms: "Toque 'Aceptar y continuar' para aceptar los",
     termsEnd: "Términos de servicio",
-    accept: "Aceptar y continuar",
+    accept: "Aceptar y Continuar",
     titleRegister: "Ingrese su número de teléfono",
     advisementAge:
       "Debes tener 16 años o más para registrarte. Conoce cómo WhatsApp trabaja con las empresas de Meta.",

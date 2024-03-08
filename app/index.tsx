@@ -1,13 +1,38 @@
-import { Text, StyleSheet, Image, Pressable, View, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
+import {
+  Text,
+  StyleSheet,
+  Image,
+  View,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Colors, moderateScale, WORDS_SCREENS } from "@/constants";
-import { Link } from "expo-router";
+import {
+  Colors,
+  moderateScale,
+  WORDS_SCREENS,
+  localeLanguage,
+} from "@/constants";
 
 const WELCOME_IMAGE = require("@/assets/images/welcome.png");
 
 const Page = () => {
   const { welcome, description, accept } = WORDS_SCREENS.Welcome;
+
+  /**
+   * Opens the WhatsApp privacy page with the specified language.
+   * @param {string} localeLenguaje - The language code for the desired language.
+   */
+  const openPrivacy = () =>
+    Linking.openURL(`https://www.whatsapp.com/privacy?lang=${localeLanguage}`);
+
+  const openTerms = () =>
+    Linking.openURL(
+      `https://www.whatsapp.com/legal/terms-of-service?lang=${localeLanguage}`
+    );
+
   return (
     <SafeAreaView style={styles.container}>
       <Image source={WELCOME_IMAGE} style={styles.welcome} />
@@ -15,11 +40,15 @@ const Page = () => {
         <Text style={styles.headline}> {welcome} </Text>
         <Text style={styles.description}>
           {description.read}{" "}
-          <Text style={styles.link}>{description.privacy}</Text>
+          <Text onPress={openPrivacy} style={styles.link}>
+            {description.privacy}
+          </Text>
           <Text style={styles.description}>
             {" "}
             {description.terms}{" "}
-            <Text style={styles.link}>{description.termsEnd}</Text>
+            <Text onPress={openTerms} style={styles.link}>
+              {description.termsEnd}
+            </Text>
           </Text>
         </Text>
       </View>
