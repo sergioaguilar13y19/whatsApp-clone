@@ -15,6 +15,7 @@ const translations = {
     advisementAge:
       "You must be 16 years or older to register. Learn how WhatsApp works with the Meta Companies.",
     verify: "Whatsapp will need to verify your account with a code.",
+    next: "Next",
   },
   es: {
     unknown: "",
@@ -28,6 +29,7 @@ const translations = {
     advisementAge:
       "Debes tener 16 años o más para registrarte. Conoce cómo WhatsApp trabaja con las empresas de Meta.",
     verify: "Whatsapp necesitará verificar tu cuenta con un código.",
+    next: "Siguiente",
   },
 };
 
@@ -51,6 +53,7 @@ const WORDS_SCREENS = {
     title: language("titleRegister"),
     advisement: language("advisementAge"),
     verify: language("verify"),
+    next: language("next"),
   },
 };
 

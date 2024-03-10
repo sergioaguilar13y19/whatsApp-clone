@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import {
   Text,
   StyleSheet,
@@ -15,6 +15,7 @@ import {
   WORDS_SCREENS,
   localeLanguage,
 } from "@/constants";
+import { Button } from "@/src/components";
 
 const WELCOME_IMAGE = require("@/assets/images/welcome.png");
 
@@ -23,7 +24,7 @@ const Page = () => {
 
   /**
    * Opens the WhatsApp privacy page with the specified language.
-   * @param {string} localeLenguaje - The language code for the desired language.
+   * @param {string} localeLanguage - The language code for the desired language.
    */
   const openPrivacy = () =>
     Linking.openURL(`https://www.whatsapp.com/privacy?lang=${localeLanguage}`);
@@ -32,7 +33,9 @@ const Page = () => {
     Linking.openURL(
       `https://www.whatsapp.com/legal/terms-of-service?lang=${localeLanguage}`
     );
-
+  const handlePress = () => {
+    router.replace("/otp");
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Image source={WELCOME_IMAGE} style={styles.welcome} />
@@ -52,11 +55,7 @@ const Page = () => {
           </Text>
         </Text>
       </View>
-      <Link href="/otp" replace asChild>
-        <TouchableOpacity style={styles.btn}>
-          <Text style={styles.txtButton}>{accept}</Text>
-        </TouchableOpacity>
-      </Link>
+      <Button title={accept} onPress={handlePress} />
     </SafeAreaView>
   );
 };
@@ -85,20 +84,6 @@ const styles = StyleSheet.create({
   },
   link: {
     color: Colors.primary,
-  },
-  btn: {
-    width: "100%",
-    height: moderateScale(45),
-    //backgroundColor: Colors.primary,
-    padding: moderateScale(6),
-    borderRadius: moderateScale(20),
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  txtButton: {
-    color: Colors.primary,
-    fontSize: moderateScale(18),
-    fontWeight: "600",
   },
 });
 

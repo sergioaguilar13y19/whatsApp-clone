@@ -1,5 +1,5 @@
 import { Entypo } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useState } from "react";
 import {
   View,
@@ -7,17 +7,21 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
 } from "react-native";
 
 import { Colors, WORDS_SCREENS, moderateScale } from "@/constants";
+import { Button } from "@/src/components";
 
-const { advisement, verify } = WORDS_SCREENS.register;
+const { advisement, verify, next } = WORDS_SCREENS.register;
 const Page = () => {
   const [loading, setLoading] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("12");
   const router = useRouter();
   const keyboardVerticalOffset = Platform.OS === "ios" ? 90 : 0;
-
+  const handleNext = () => {
+    router.push("/otp");
+  };
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -26,26 +30,35 @@ const Page = () => {
       <View style={styles.list}>
         <View style={styles.listItem}>
           <Text style={styles.textItem}>Mexico</Text>
-          <Entypo
-            name="chevron-thin-right"
-            size={moderateScale(20)}
-            color="black"
-          />
+          <Link href={""}>
+            <Entypo
+              name="chevron-thin-right"
+              size={moderateScale(20)}
+              color={Colors.primary}
+            />
+          </Link>
         </View>
-        <View>
+        <View style={styles.separator} />
+        <View style={styles.listItem}>
           <Text style={styles.textItem}>52</Text>
         </View>
       </View>
       <Text style={styles.textFooter}>{advisement}</Text>
+      <Button
+        title={next}
+        style={phoneNumber.length <= 2 && { backgroundColor: Colors.lightGray }}
+        onPress={handleNext}
+      />
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.4,
     padding: moderateScale(15),
     alignItems: "center",
+    justifyContent: "space-between",
   },
   textHeader: {
     fontSize: moderateScale(14),
@@ -59,17 +72,20 @@ const styles = StyleSheet.create({
   },
   list: {
     width: "100%",
-    padding: moderateScale(10),
+    paddingHorizontal: moderateScale(10),
     borderRadius: moderateScale(10),
-    backgroundColor: "#f9f9f9",
+    backgroundColor: Colors.item,
   },
   listItem: {
     flexDirection: "row",
     justifyContent: "space-between",
-    borderBottomWidth: moderateScale(.5),
-
     width: "100%",
-    marginBottom: moderateScale(5),
+    marginVertical: moderateScale(10),
+  },
+  separator: {
+    width: "100%",
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: Colors.gray,
   },
   textItem: {
     fontSize: moderateScale(14),
