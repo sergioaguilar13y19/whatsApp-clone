@@ -7,58 +7,77 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  Pressable,
 } from "react-native";
+import MaskInput from "react-native-mask-input";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { Colors, WORDS_SCREENS, moderateScale } from "@/constants";
+import { Colors, WORDS_SCREENS, moderateScale, MASK_MEXICO } from "@/constants";
 import { Button } from "@/src/components";
 
 const { advisement, verify, next } = WORDS_SCREENS.register;
+
 const Page = () => {
   const [loading, setLoading] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("12");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const router = useRouter();
   const keyboardVerticalOffset = Platform.OS === "ios" ? 90 : 0;
+  const { bottom } = useSafeAreaInsets();
   const handleNext = () => {
     router.push("/otp");
   };
   return (
     <KeyboardAvoidingView
-      style={styles.container}
+      style={{ flex: 1 }}
       keyboardVerticalOffset={keyboardVerticalOffset}>
-      <Text style={styles.textHeader}>{verify}</Text>
-      <View style={styles.list}>
-        <View style={styles.listItem}>
-          <Text style={styles.textItem}>Mexico</Text>
-          <Link href={""}>
-            <Entypo
-              name="chevron-thin-right"
-              size={moderateScale(20)}
-              color={Colors.primary}
+      <View style={styles.container}>
+        <Text style={styles.textHeader}>{verify}</Text>
+        <View style={styles.list}>
+          <View style={styles.listItem}>
+            <Text style={styles.textItem}>Mexico</Text>
+            <Link href={""}>
+              <Entypo
+                name="chevron-thin-right"
+                size={moderateScale(20)}
+                color={Colors.primary}
+              />
+            </Link>
+          </View>
+          <View style={styles.separator} />
+          <View style={styles.listItem}>
+            <MaskInput
+              value={phoneNumber}
+              keyboardType="number-pad"
+              autoFocus
+              placeholder="+52 123 456 7890"
+              onChangeText={(masked, unmasked) => {
+                setPhoneNumber(masked);
+              }}
+              mask={MASK_MEXICO}
+              style={styles.txtInput}
             />
-          </Link>
+          </View>
         </View>
-        <View style={styles.separator} />
-        <View style={styles.listItem}>
-          <Text style={styles.textItem}>52</Text>
-        </View>
+        <Text style={styles.textFooter}>{advisement}</Text>
+        <View style={{ flex: 1 }} />
+        <Button
+          title={next}
+          style={
+            phoneNumber.length <= 2 && { backgroundColor: Colors.lightGray }
+          }
+          onPress={handleNext}
+        />
+        <View style={{ height: bottom }} />
       </View>
-      <Text style={styles.textFooter}>{advisement}</Text>
-      <Button
-        title={next}
-        style={phoneNumber.length <= 2 && { backgroundColor: Colors.lightGray }}
-        onPress={handleNext}
-      />
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.4,
+    flex: 1,
     padding: moderateScale(15),
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   textHeader: {
     fontSize: moderateScale(14),
@@ -88,8 +107,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.gray,
   },
   textItem: {
-    fontSize: moderateScale(14),
-    marginBottom: moderateScale(9),
+    fontSize: moderateScale(15),
+    color: Colors.primary,
+    fontWeight: "500",
+  },
+  txtInput: {
+    fontSize: moderateScale(15),
     fontWeight: "500",
   },
 });
