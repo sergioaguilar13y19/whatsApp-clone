@@ -16,6 +16,10 @@ const translations = {
       "You must be 16 years or older to register. Learn how WhatsApp works with the Meta Companies.",
     verify: "Whatsapp will need to verify your account with a code.",
     next: "Next",
+    verifyTitle: "Verify Your Phone Number",
+    edit: "Edit",
+    verifyInformation: "Enter the 6-digit code we sent by SMS to",
+    verifyAgain: "Didn't receive the verification code?",
   },
   es: {
     unknown: "",
@@ -30,6 +34,10 @@ const translations = {
       "Debes tener 16 años o más para registrarte. Conoce cómo WhatsApp trabaja con las empresas de Meta.",
     verify: "Whatsapp necesitará verificar tu cuenta con un código.",
     next: "Siguiente",
+    verifyTitle: "Verifica tu número de teléfono",
+    edit: "Editar",
+    verifyInformation: "Ingrese el código de 6 dígitos que enviamos por SMS a",
+    verifyAgain: "¿No recibiste el código de verificación?",
   },
 };
 
@@ -54,6 +62,12 @@ const WORDS_SCREENS = {
     advisement: language("advisementAge"),
     verify: language("verify"),
     next: language("next"),
+  },
+  verify: {
+    title: language("verifyTitle"),
+    backTitle: language("edit"),
+    information: language("verifyInformation"),
+    again: language("verifyAgain"),
   },
 };
 

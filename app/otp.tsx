@@ -22,12 +22,20 @@ const Page = () => {
   const router = useRouter();
   const keyboardVerticalOffset = Platform.OS === "ios" ? 90 : 0;
   const { bottom } = useSafeAreaInsets();
+
+  const verifyPhone = phoneNumber.length <= 16;
   const handleNext = () => {
-    router.push("/otp");
+    //router.push("/otp");
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      router.push(`/verify/${phoneNumber}`);
+    }, 2000);
   };
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
+      behavior="padding"
       keyboardVerticalOffset={keyboardVerticalOffset}>
       <View style={styles.container}>
         <Text style={styles.textHeader}>{verify}</Text>
@@ -47,8 +55,8 @@ const Page = () => {
             <MaskInput
               value={phoneNumber}
               keyboardType="number-pad"
-              autoFocus
               placeholder="+52 123 456 7890"
+              autoFocus
               onChangeText={(masked, unmasked) => {
                 setPhoneNumber(masked);
               }}
@@ -61,10 +69,10 @@ const Page = () => {
         <View style={{ flex: 1 }} />
         <Button
           title={next}
-          style={
-            phoneNumber.length <= 2 && { backgroundColor: Colors.lightGray }
-          }
+          style={verifyPhone && { backgroundColor: Colors.lightGray }}
           onPress={handleNext}
+          isLoading={loading}
+          disabled={verifyPhone}
         />
         <View style={{ height: bottom }} />
       </View>

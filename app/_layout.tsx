@@ -2,7 +2,8 @@ import { Stack } from "expo-router";
 import React from "react";
 
 import { WORDS_SCREENS } from "@/constants";
-const { title } = WORDS_SCREENS.register;
+
+const { register, verify } = WORDS_SCREENS;
 
 const _layout = () => {
   return (
@@ -10,7 +11,15 @@ const _layout = () => {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="otp"
-        options={{ headerTitle: title, headerTitleAlign: "center" }}
+        options={{ headerTitle: register.title, headerTitleAlign: "center" }}
+      />
+      <Stack.Screen
+        name="verify/[phone]"
+        options={{
+          headerTitle: verify.title,
+          headerTitleAlign: "center",
+          headerBackTitle: verify.backTitle,
+        }}
       />
     </Stack>
   );
