@@ -1,4 +1,4 @@
-import { moderateScale } from "@/constants";
+import { Colors, moderateScale } from "@/constants";
 import { StyleSheet, Platform } from "react-native";
 
 export const CELL_SIZE = moderateScale(65);
@@ -9,17 +9,15 @@ export const ACTIVE_CELL_BG_COLOR = "#f7fafe";
 
 const styles = StyleSheet.create({
   cell: {
-    marginHorizontal: 8,
+    marginHorizontal: moderateScale(10) / 2,
     height: CELL_SIZE,
     width: CELL_SIZE,
     lineHeight: CELL_SIZE - 5,
-    ...Platform.select({ web: { lineHeight: 65 } }),
     fontSize: moderateScale(24),
     textAlign: "center",
     borderRadius: CELL_BORDER_RADIUS,
-    color: "#3759b8",
+    color: Colors.primary,
     backgroundColor: "#fff",
-
     // IOS
     shadowColor: "#000",
     shadowOffset: {

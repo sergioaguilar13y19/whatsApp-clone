@@ -22,7 +22,7 @@ const Page = () => {
   const router = useRouter();
   const keyboardVerticalOffset = Platform.OS === "ios" ? 90 : 0;
   const { bottom } = useSafeAreaInsets();
-
+  
   const verifyPhone = phoneNumber.length <= 16;
   const handleNext = () => {
     //router.push("/otp");
@@ -30,7 +30,7 @@ const Page = () => {
     setTimeout(() => {
       setLoading(false);
       router.push(`/verify/${phoneNumber}`);
-    }, 2000);
+    }, 200);
   };
   return (
     <KeyboardAvoidingView

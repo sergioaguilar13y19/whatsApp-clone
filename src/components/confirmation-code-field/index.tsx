@@ -1,5 +1,5 @@
-import { Animated, Image, SafeAreaView, Text, View } from "react-native";
-import React, { useState } from "react";
+import { Animated, View } from "react-native";
+import React from "react";
 
 import {
   CodeField,
@@ -22,7 +22,15 @@ const CELL_COUNT = 4;
 
 const animationsColor = [...new Array(CELL_COUNT)].map(() => new Value(0));
 const animationsScale = [...new Array(CELL_COUNT)].map(() => new Value(1));
-const animateCell = ({ hasValue, index, isFocused }) => {
+const animateCell = ({
+  hasValue,
+  index,
+  isFocused,
+}: {
+  hasValue: boolean;
+  index: number;
+  isFocused: boolean;
+}) => {
   Animated.parallel([
     Animated.timing(animationsColor[index], {
       useNativeDriver: true,
@@ -32,7 +40,6 @@ const animateCell = ({ hasValue, index, isFocused }) => {
     Animated.spring(animationsScale[index], {
       useNativeDriver: true,
       toValue: hasValue ? 0 : 1,
-      duration: hasValue ? 300 : 250,
     }),
   ]).start();
 };
@@ -44,7 +51,15 @@ const ConfirmationCodeField = ({ value, setValue }: props) => {
     setValue,
   });
 
-  const renderCell = ({ index, symbol, isFocused }) => {
+  const renderCell = ({
+    index,
+    symbol,
+    isFocused,
+  }: {
+    index: number;
+    symbol: string;
+    isFocused: boolean;
+  }) => {
     const hasValue = Boolean(symbol);
     const animatedCellStyle = {
       backgroundColor: hasValue
