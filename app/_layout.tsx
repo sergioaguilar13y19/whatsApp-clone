@@ -5,7 +5,7 @@ import { WORDS_SCREENS } from "@/constants";
 
 const { register, verify } = WORDS_SCREENS;
 
-const _layout = () => { 
+const _layout = () => {
   return (
     <Stack initialRouteName="(tabs)">
       <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -13,7 +13,7 @@ const _layout = () => {
         name="otp"
         options={{ headerTitle: register.title, headerTitleAlign: "center" }}
       />
-      <Stack.Screen
+      <Stack.Screen 
         name="verify/[phone]"
         options={{
           headerTitle: verify.title,

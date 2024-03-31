@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 
 import { Colors, moderateScale } from "@/constants";
-import { BoxedIcon } from "@/src/components";
+import { BoxedIcon } from "../../boxed-Icon";
 
 type Item = {
   name: string;

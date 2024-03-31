@@ -25,6 +25,7 @@ const translations = {
     communities: "Communities",
     chats: "Chats",
     settings: "Settings",
+    search: "Search",
   },
   es: {
     unknown: "",
@@ -48,6 +49,7 @@ const translations = {
     communities: "Comunidades",
     chats: "Chats",
     settings: "Configuración",
+    search: "Buscar",
   },
 };
 
@@ -85,8 +87,10 @@ const WORDS_SCREENS = {
     communities: language("communities"),
     chats: language("chats"),
     settings: language("settings"),
+    placeHolder: {
+      search: language("search"),
+    },
   },
-
 };
 
 export { WORDS_SCREENS };

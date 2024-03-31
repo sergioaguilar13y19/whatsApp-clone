@@ -1,4 +1,12 @@
-import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { Colors, defaultStyles, moderateScale } from "@/constants";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -75,10 +83,13 @@ const settings = () => {
   );
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
         <FlatListSettings data={devices} />
         <FlatListSettings data={items} />
         <FlatListSettings data={support} />
+        <TouchableOpacity>
+          <Text style={styles.btn}>Log Out</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -88,6 +99,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  btn: {
+    color: Colors.primary,
+    fontSize: moderateScale(16),
+    marginTop: moderateScale(20),
+    padding: moderateScale(10),
+    textAlign: "center",
   },
 });
 

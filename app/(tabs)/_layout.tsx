@@ -32,6 +32,7 @@ const Layout = () => {
             tabBarIcon: ({ size, color }) => (
               <Ionicons name="settings-outline" size={size} color={color} />
             ),
+            headerShown: false,
           }}
         />
         <Tabs.Screen

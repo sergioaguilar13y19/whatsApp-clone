@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Stack, router, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -19,6 +19,7 @@ const Page = () => {
   }, [code]);
   const verifyCode = async () => {
     console.log("verifyCode");
+    router.replace("/(tabs)/settings")
   };
   const verifySignIn = async () => {};
   const resendCode = async () => {};
