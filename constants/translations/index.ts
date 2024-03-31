@@ -20,6 +20,11 @@ const translations = {
     edit: "Edit",
     verifyInformation: "Enter the 6-digit code we sent by SMS to",
     verifyAgain: "Didn't receive the verification code?",
+    updates: "Updates",
+    calls: "Calls",
+    communities: "Communities",
+    chats: "Chats",
+    settings: "Settings",
   },
   es: {
     unknown: "",
@@ -38,6 +43,11 @@ const translations = {
     edit: "Editar",
     verifyInformation: "Ingrese el código de 6 dígitos que enviamos por SMS a",
     verifyAgain: "¿No recibiste el código de verificación?",
+    updates: "Estados",
+    calls: "Llamadas",
+    communities: "Comunidades",
+    chats: "Chats",
+    settings: "Configuración",
   },
 };
 
@@ -69,6 +79,14 @@ const WORDS_SCREENS = {
     information: language("verifyInformation"),
     again: language("verifyAgain"),
   },
+  tabs: {
+    updates: language("updates"),
+    calls: language("calls"),
+    communities: language("communities"),
+    chats: language("chats"),
+    settings: language("settings"),
+  },
+
 };
 
 export { WORDS_SCREENS };

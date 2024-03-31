@@ -7,7 +7,8 @@ const { register, verify } = WORDS_SCREENS;
 
 const _layout = () => {
   return (
-    <Stack>
+    <Stack initialRouteName="(tabs)">
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="otp"
