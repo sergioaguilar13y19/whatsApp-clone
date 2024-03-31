@@ -5,10 +5,9 @@ import { WORDS_SCREENS } from "@/constants";
 
 const { register, verify } = WORDS_SCREENS;
 
-const _layout = () => {
+const _layout = () => { 
   return (
     <Stack initialRouteName="(tabs)">
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="otp"
@@ -22,6 +21,7 @@ const _layout = () => {
           headerBackTitle: verify.backTitle,
         }}
       />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 };
